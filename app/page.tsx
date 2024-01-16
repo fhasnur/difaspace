@@ -1,7 +1,10 @@
+import React from 'react';
+import NavLinks from './ui/nav-links';
+
 export default function Home() {
   return (
-    <main>
-      <h1>difaspace</h1>
-    </main>
+    <header>
+      <NavLinks />
+    </header>
   )
 }
