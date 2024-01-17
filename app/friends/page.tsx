@@ -1,7 +1,11 @@
 import React from 'react';
+import NavLinks from '../ui/nav-links';
 
 export default function Friends() {
   return (
-    <div>Friends</div>
+    <>
+      <NavLinks />
+      <div>Friends</div>
+    </>
   )
 }

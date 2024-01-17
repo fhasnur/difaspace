@@ -1,7 +1,11 @@
 import React from 'react';
+import NavLinks from '../ui/nav-links';
 
 export default function Find() {
   return (
-    <div>Find</div>
+    <>
+      <NavLinks />
+      <div>Find</div>
+    </>
   )
 }

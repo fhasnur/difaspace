@@ -1,7 +1,11 @@
 import React from 'react';
+import NavLinks from '../ui/nav-links';
 
 export default function Chat() {
   return (
-    <div>Chat</div>
+    <>
+      <NavLinks />
+      <div>Chat</div>
+    </>
   )
 }
