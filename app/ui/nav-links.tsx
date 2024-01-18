@@ -14,29 +14,34 @@ export default function NavLinks() {
   return (
     <Navbar>
       <NavbarBrand>
-        <p className="font-medium text-2xl">difaspace</p>
+        <Link className="font-medium text-xl" href="/">
+          difaspace
+        </Link>
       </NavbarBrand>
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarItem>
-          <Link className="text-lg" href="/find" aria-current="page">
+          <Link href="/find" aria-current="page">
             Find
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link className="text-lg" href="/friends">
+          <Link href="/friends">
             Friends
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link className="text-lg" href="/chat">
+          <Link href="/chat">
             Chat
           </Link>
         </NavbarItem>
       </NavbarContent>
       <NavbarContent justify="end">
+        <NavbarItem className="hidden lg:flex">
+          <Link href="#">Login</Link>
+        </NavbarItem>
         <NavbarItem>
-          <Button className="text-md" as={Link} color="primary" href="#" variant="flat">
-            Login
+          <Button as={Link} color="primary" href="/register" variant="flat">
+            Sign Up
           </Button>
         </NavbarItem>
       </NavbarContent>
