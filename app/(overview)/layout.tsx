@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import NavLinks from '../ui/nav-links';
 import { Metadata } from 'next';
 
@@ -13,7 +14,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <NavLinks />
-      <main>{children}</main>
+      <main>
+        {children}
+      </main>
     </>
   );
 }
