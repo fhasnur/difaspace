@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, ChangeEvent } from "react";
+import { useState } from "react";
 import {
   Card,
   CardHeader,
@@ -12,38 +12,10 @@ import {
 import { EyeFilledIcon } from "../eye-icon";
 import { EyeSlashFilledIcon } from "../eyeslash-icon";
 
-export default function RegisterCard({
-  user,
-  setUser,
-  handleRegister
-}: {
-  user: {
-    name: string;
-    email: string;
-    password: string;
-  };
-  setUser: (user: {
-    name: string;
-    email: string;
-    password: string;
-  }) => void;
-  handleRegister: () => void;
-}) {
+export default function LoginCard() {
   const [isVisible, setIsVisible] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
 
   const toggleVisibility = () => setIsVisible(!isVisible);
-
-  const handleRegisterClick = async () => {
-    try {
-      setIsLoading(true);
-      await handleRegister();
-    } catch (error) {
-      console.error('Registration failed', error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
 
   return (
     <Card className="w-[600px] mt-32 p-6">
@@ -57,19 +29,6 @@ export default function RegisterCard({
           variant="bordered"
           placeholder="Enter your username"
           labelPlacement="outside"
-          value={user.name}
-          onChange={(e) => setUser({ ...user, name: e.target.value })}
-          required
-        />
-        <Input
-          className="w-full"
-          type="email"
-          label="Email"
-          variant="bordered"
-          placeholder="Enter your email"
-          labelPlacement="outside"
-          value={user.email}
-          onChange={(e) => setUser({ ...user, email: e.target.value })}
           required
         />
         <Input
@@ -88,12 +47,10 @@ export default function RegisterCard({
           }
           type={isVisible ? "text" : "password"}
           labelPlacement="outside"
-          value={user.password}
-          onChange={(e) => setUser({ ...user, password: e.target.value })}
           required
         />
-        <Button color="primary" radius="full" onClick={handleRegisterClick}>
-          {isLoading ? <CircularProgress size="sm" aria-label="Loading..." /> : 'Register'}
+        <Button color="primary" radius="full">
+          Login
         </Button>
       </CardBody>
     </Card >

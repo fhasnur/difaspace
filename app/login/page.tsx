@@ -1,5 +1,9 @@
+import LoginCard from "../ui/login/card"
+
 export default function LoginPage() {
   return (
-    <div>Login</div>
+    <section className="flex items-center justify-center h-full">
+      <LoginCard />
+    </section>
   )
 }
