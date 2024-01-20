@@ -3,11 +3,17 @@
 import RegisterCard from "@/app/ui/register/card";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import axiosInstance from "@/app/utils/axios-instance";
+import axios from "axios";
+
+interface User {
+  name: string,
+  email: string,
+  password: string
+}
 
 export default function RegisterPage() {
   const router = useRouter();
-  const [user, setUser] = useState({
+  const [user, setUser] = useState<User>({
     name: "",
     email: "",
     password: ""
@@ -15,8 +21,8 @@ export default function RegisterPage() {
 
   const handleRegister = async () => {
     try {
-      const response = await axiosInstance.post("/register", user);
-      if (response.status === 200) {
+      const response = await axios.post("/api/auth/register", user);
+      if (response.status === 201) {
         console.log("Registration successful", response.data);
         router.push("/login");
       }
