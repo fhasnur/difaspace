@@ -6,7 +6,8 @@ import {
   CardHeader,
   CardBody,
   Input,
-  Button
+  Button,
+  CircularProgress
 } from "@nextui-org/react";
 import { EyeFilledIcon } from "./eye-icon";
 import { EyeSlashFilledIcon } from "./eyeslash-icon";
@@ -29,8 +30,20 @@ export default function RegisterCard({
   handleRegister: () => void;
 }) {
   const [isVisible, setIsVisible] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const toggleVisibility = () => setIsVisible(!isVisible);
+
+  const handleRegisterClick = async () => {
+    try {
+      setIsLoading(true);
+      await handleRegister();
+    } catch (error) {
+      console.error('Registration failed', error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <Card className="w-[600px] mt-32 p-6">
@@ -79,8 +92,8 @@ export default function RegisterCard({
           onChange={(e) => setUser({ ...user, password: e.target.value })}
           required
         />
-        <Button color="primary" radius="full" onClick={handleRegister}>
-          Register
+        <Button color="primary" radius="full" onClick={handleRegisterClick}>
+          {isLoading ? <CircularProgress size="sm" aria-label="Loading..." /> : 'Register'}
         </Button>
       </CardBody>
     </Card >
